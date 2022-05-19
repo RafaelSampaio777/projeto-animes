@@ -58,6 +58,13 @@ body {
     font-size: max(7px, 1vw);
 }
 
+.header ul li .cadastro-button {
+    background-color: #fb8500;
+    border: 8px solid #fb8500;
+    border-radius: 7px;
+    color: #0077b6;
+}
+
 .banner {
     background-image: url(style/IMG/background/background\ anime\ 3.webp);
     background-size: cover;
