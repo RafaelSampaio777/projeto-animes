@@ -112,14 +112,14 @@ body {
     font-family: 'Ninja Naruto';
     margin-top: 20px;
     width: max(60px, 25%);
-    height: 10%;
+    height: 35px;
     border: max(0.4vw, 3px) solid #f77f00;
     border-radius: 5px;
     font-size: max(8px, 1vw);
     cursor: pointer;
 }
 
-.footer {
+footer {
     background-color: #0077b6;
     border-top: 5px solid #f3722c;
     height: 200px;
