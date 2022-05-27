@@ -15,7 +15,7 @@ body {
 
 .header {
     width: 100%;
-    background-color: #0077b6;
+    background-color: #042157;
     border-bottom: 5px solid #f3722c;
     position: fixed;
     top: 0;
@@ -62,7 +62,7 @@ body {
     background-color: #fb8500;
     border: 8px solid #fb8500;
     border-radius: 7px;
-    color: #0077b6;
+    color: #042157;
 }
 
 .banner {
@@ -77,6 +77,8 @@ body {
 }
 
 .cadastro.login {
+    background-image: url(style/IMG/background/banner\ eueueu.jpg);
+    background-size: contain;
     display: flex;
     width: 100%;
     margin-top: 75px;
@@ -127,7 +129,7 @@ body {
 }
 
 footer {
-    background-color: #0077b6;
+    background-color: #042157;
     border-top: 5px solid #f3722c;
-    height: 200px;
+    height: 77px;
 }
