@@ -65,11 +65,8 @@ body {
     color: #042157;
 }
 
-.banner {
-    background-image: url(style/IMG/background/background\ anime\ 3.webp);
-    background-size: cover;
-    margin-top: 75px;
-    height: 500px;
+.slider {
+
 }
 
 .corpo .container {
