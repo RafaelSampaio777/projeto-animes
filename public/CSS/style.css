@@ -167,8 +167,8 @@ body {
 }
 
 .cadastro.login {
-    background-image: url(style/IMG/background/banner\ eueueu.jpg);
-    background-size: contain;
+    background-image: url(style/IMG/background/background_naruto_inicioV2.jpg);
+    background-size: cover;
     display: flex;
     width: 100%;
     margin-top: 75px;
