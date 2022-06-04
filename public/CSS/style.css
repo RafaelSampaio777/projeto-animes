@@ -167,13 +167,15 @@ body {
 }
 
 .cadastro.login {
-    background-image: url(style/IMG/background/background_naruto_inicioV2.jpg);
+    background-image: url(style/IMG/background/background_naruto_inicioVteste.jpg);
     background-size: cover;
+    background-position-y: -35px;
     display: flex;
     width: 100%;
     margin-top: 75px;
     align-items: center;
-    height: 500px;
+    height: 550px;
+    color: #042157;
 }
 
 .cadastro.login .container {
@@ -181,13 +183,22 @@ body {
 }
 
 .card {
-    border: 3px solid #000000;
     width: 45%;
     padding: 10px 0 30px 0;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+#div_erros_login {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card h2 {
@@ -205,6 +216,9 @@ body {
 .card input {
     border-radius: 5px;
     width: max(40%, 100px);
+    border: 1px solid #f77f00;
+    background-color: transparent;
+    color: #042157;
 }
 
 .card button {
@@ -213,10 +227,48 @@ body {
     width: max(60px, 25%);
     height: 35px;
     border: max(0.4vw, 3px) solid #f77f00;
+    background-color: #042157;
+    color: #f77f00;
     border-radius: 5px;
     font-size: max(8px, 1vw);
     cursor: pointer;
 }
+
+.card button:hover {
+    background-color: #f77f00;
+    border: max(0.4vw, 3px) solid #042157;
+    color: #042157;
+}
+
+#div_aguardar {
+    display: none;
+}
+
+#div_aguardar img {
+    width: 10%;
+}
+
+.alerta_erro{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .card_erro {
+    display: none;
+    background-color: #fff;
+    color: #042157;
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: #f77f00 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+  }
+  
+  .card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 20px;
+  }
 
 footer {
     background-color: #042157;
