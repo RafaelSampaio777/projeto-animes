@@ -4,6 +4,8 @@ function validarSessao() {
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+    var anime = sessionStorage.ANIME_FAVORITO;
+    var usuario = sessionStorage.ID_USUARIO;
 
     var b_usuario = document.getElementById("b_usuario");
 
@@ -38,16 +40,4 @@ function finalizarAguardar(texto) {
     if (texto) {
         divErrosLogin.innerHTML = texto;
     }
-}
-
-
-// modal
-function mostrarModal() {
-    var divModal = document.getElementById("div_modal");
-    divModal.style.display = "flex";
-}
-
-function fecharModal() {
-    var divModal = document.getElementById("div_modal");
-    divModal.style.display = "none";
 }

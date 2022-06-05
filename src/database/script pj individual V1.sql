@@ -24,3 +24,8 @@ FK_usuario INT,
 FOREIGN KEY (FK_usuario) REFERENCES usuario(ID),
 PRIMARY KEY (ID, FK_usuario)
 );
+
+INSERT INTO animes VALUES
+(NULL, 'One Piece', 1020),
+(NULL, 'Naruto', 632),
+(NULL, 'Bleach', 327);

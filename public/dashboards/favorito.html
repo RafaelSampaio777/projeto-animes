@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="../JS/funcoes.js"></script>
+    <title>Document</title>
+</head>
+
+<body style="font-family: One Piece Manga;" onload="validarSessao()">
+    <div class="janela">
+        <div class="header-left">
+            <div>
+                <span class="op">AN</span>
+                <span class="i_op">I</span>
+                <span class="op">MESMAN</span>
+                <span class="i_op">I</span>
+                <span class="op">A</span>
+            </div>
+            <div class="hello">
+                <h2>Olá, <span id="b_usuario">usuário</span>!</h2>
+            </div>
+            <div>
+                <a href="favorito.html">
+                    <h3  class="agora">FAVORITO</h3>
+                </a>
+            </div>
+            <div>
+                <a href="quiz.html">
+                    <h3>QUIZ</h3>
+                </a>
+            </div>
+            <div>
+                <a href="">
+                    <h3>CHAT</h3>
+                </a>
+            </div>
+            <div onclick="limparSessao()">
+                <h3>SAIR</h3>
+            </div>
+        </div>
+
+        <div class="box" id="box">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function escolher_anime(){
+       var fk_animeVar = fk_anime;
+       var usuarioVar = sessionStorage.ID_USUARIO;
+
+       fetch("/favorito/escolher_anime", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                fk_animeServer: fk_animeVar,
+                usuarioServer: usuarioVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+</script>
+
+<script>
+    var anime = sessionStorage.ANIME_FAVORITO;
+    
+    if(anime == 1){
+       
+    }
+    else if(anime == 2){
+
+    }
+    else if(anime == 3){
+
+    }
+    else{
+        box.innerHTML = `
+        <div class="bloco">
+                <img src="../CSS/style/IMG/background/background_one_piece_inicio.webp" alt="" class="anime">
+                <h4>One Piece</h4>
+                <p>bababababbababa</p>
+                <button onclick="escolher_anime(fk_anime = 1)">Escolher</button>
+            </div>
+            <div class="bloco" style="font-family: Ninja Naruto;">
+                <img src="../CSS/style/IMG/background/background_naruto_inicioV1.jpg" alt="" class="anime">
+                <h4>Naruto</h4>
+                <p>bababababbababa</p>
+                <button onclick="escolher_anime(fk_anime = 2)">Escolher</button>
+            </div>
+            <div class="bloco" style="font-family: Bleach;">
+                <img src="../CSS/style/IMG/background/background_bleach_inicio.jpg" alt="" class="anime">
+                <h4>BLEACH</h4>
+                <p>BABABABABABABA</p>
+                <button onclick="escolher_anime(fk_anime = 3)">Escolher</button>
+            </div>
+        `
+    }
+</script>
