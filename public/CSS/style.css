@@ -357,7 +357,7 @@ footer {
 }
 
 .box {
-    width: 70%;
+    width: 74.75%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -386,3 +386,132 @@ footer {
     margin-bottom: 20px;
     cursor: pointer;
 }
+
+/* BLOCO QUIZ */
+
+.conteudos {
+    width: 74.75%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(style/IMG/site/bleach1.png);
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.centro {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin: 0.5rem 0 0 0;
+    color: #FFFFFF;
+}
+
+.questoes {
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    margin-bottom: 0.625rem;
+    color: #FFFFFF;
+}
+
+.questoes ol li {
+    border: 1px solid #042157;
+    display: block;
+    margin-bottom: 2vh;
+    padding: 2.5vh;
+    border-radius: 8px;
+}
+
+.questoes ol li:hover {
+    background: #042157;
+    cursor: pointer;
+}
+
+.questao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+#numQuestao {
+    text-align: center;
+    width: 1.5vw;
+    height: 3.5vh;
+    display: block;
+    background: #042157;
+    color: #fff;
+    padding: 6px 10px 4px 8px;
+    border-radius: 50%;
+}
+
+#pergunta {
+    margin-left: 1vw;
+}
+
+.bloqueado {
+    display: none;
+}
+
+.bloqueado li:hover {
+    display: none;
+}
+
+#instrucoes {
+    font-size: 1.3vw;
+    color: #FFFFFF;
+    padding: 0.625vw;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+#aviso {
+    color: #042157;
+}
+
+.placar {
+    padding: 2vh;
+    border-radius: 8px;
+    background:#042157;
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.botao {
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid #ececec;
+    width: 40%;
+    height: 30vh;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    padding: 30px 0 30px 0;
+}
+
+.botao button {
+    border: 1px solid #042157;
+    display: block;
+    padding: 2.5vh;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+}
+
+.botao button:hover {
+    background: #042157;
+    cursor: pointer;
+}
+
+/* FIM QUIZ */

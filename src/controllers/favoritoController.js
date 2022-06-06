@@ -1,5 +1,24 @@
 var favoritoModel = require("../models/favoritoModel");
 
+function buscarUltimasMedidas(req, res) {
+
+    var fk_anime = req.params.fk_anime;
+
+    console.log(`Recuperando as ultimas medidas`);
+
+    medidaModel.buscarUltimasMedidas(fk_anime).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 function escolher_anime(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var fk_anime = req.body.fk_animeServer;
@@ -32,5 +51,6 @@ function escolher_anime(req, res) {
 }
 
 module.exports = {
-    escolher_anime
+    escolher_anime,
+    buscarUltimasMedidas
 }
