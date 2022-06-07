@@ -1,4 +1,3 @@
-/* Aula 20 MaiaQuiz  */
 var titulo     = document.querySelector('h1')
 var instrucoes = document.querySelector('#instrucoes')
 var aviso      = document.querySelector('#aviso')
@@ -6,23 +5,17 @@ var progresso  = document.querySelector('#progresso')
 var pontos = 0
 var placar = 0
 
-// PERGUNTA
 var numQuestao = document.querySelector('#numQuestao')
 var pergunta   = document.querySelector('#pergunta')
 
-// ALTERNATIVAS
 var a = document.querySelector('#a')
 var b = document.querySelector('#b')
 var c = document.querySelector('#c')
 var d = document.querySelector('#d')
 
-// div com a class questoes
 var divQuestoes = document.querySelector('.questoes')
-// ol li com as alternativas
 var alternativas = document.querySelector('#alternativas')
-// div do botao para fazer o quiz novamente
 var divBotaoRefazer = document.querySelector('.botao')
-// tudo
 var divTela = document.querySelector('.conteudos')
 
 var q0 = {
@@ -125,7 +118,6 @@ var q10 = {
     correta      : "Akainu",
 }
 
-// CONSTANTE COM UM ARRAY DE OBJETOS COM TODAS AS QUESTOES
 var questoes = [q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
 var imgs = ["bleach1.png", "usopp.webp", "naruto1.webp", "bleach2.jpg", "luffy.webp", "naruto2.jpg", "bleach3.jpg", "O_MAIOR_DE_TODOS.jpg", "naruto3.jpg", "chopper.jpg"]
 
@@ -138,7 +130,6 @@ var totalDeQuestoes = (questoes.length)-1
 console.log("Total de questões " + totalDeQuestoes)
 total.textContent = totalDeQuestoes
 
-// MONTAR A 1a QUESTAO COMPLETA, para iniciar o Quiz
 numQuestao.textContent = q1.numQuestao
 pergunta.textContent   = q1.pergunta
 a.textContent = q1.alternativaA
@@ -146,13 +137,11 @@ b.textContent = q1.alternativaB
 c.textContent = q1.alternativaC
 d.textContent = q1.alternativaD
 
-// CONFIGURAR O VALUE INICIAL DA 1a QUESTAO COMPLETA
 a.setAttribute('value', '1A')
 b.setAttribute('value', '1B')
 c.setAttribute('value', '1C')
 d.setAttribute('value', '1D')
 
-// PARA MONTAR AS PROXIMAS QUESTOES
 function proximaQuestao(nQuestao) {
     numero.textContent = nQuestao
     numQuestao.textContent = questoes[nQuestao].numQuestao
@@ -170,13 +159,10 @@ function proximaQuestao(nQuestao) {
         divTela.style.backgroundImage = `url(../CSS/style/IMG/site/${imgs[contador]})`
         divTela.style.backgroundSize = "cover"
     }
-    //console.log(progresso.value)
 }
 
-// VERIFICAR DUPLO CLICK NAS ALTERNATIVAS
 alternativas.addEventListener('dblclick', () => {
-    //console.log('Duplo clique')
-    pontos -= 1 // tirar 10 pontos em caso de duplo click
+    pontos -= 1
     if(numQuestao.value == 1 && pontos == 11) { pontos = 10 }
 })
 
@@ -194,25 +180,17 @@ function verificarSeAcertou(nQuestao, resposta) {
     console.log("Questão " + numeroDaQuestao)
 
     var respostaEscolhida = resposta.textContent
-    //console.log("RespU " + respostaEscolhida)
 
     var certa = questoes[numeroDaQuestao].correta
-    //console.log("RespC " + certa)
 
     if(respostaEscolhida == certa) {
-        //console.log("Acertou")
-        //respostaEsta.textContent = "Correta 😊"
-        pontos += 1 // pontos = pontos + 10
+        pontos += 1
         if(nQuestao.value == 1 && pontos == 2) { pontos = 1 }
     } else {
-        //console.log("Errou!")
-        //respostaEsta.textContent = "Errada 😢"
     }
-    // atualizar placar
     placar = pontos
     instrucoes.textContent = "Pontos " + placar
 
-    // bloquear a escolha de opcoes
     bloquearAlternativas()
 
     setTimeout(function() {
@@ -237,7 +215,6 @@ function fimDoJogo() {
 
     instrucoes.classList.add('placar')
 
-    // OCULTAR O div DA QUESTAO
     divQuestoes.style.display = 'none'
 
     divBotaoRefazer.style.display = "flex"
@@ -248,12 +225,11 @@ function fimDoJogo() {
 }
 
 function rezetar() {
-        pontos = 0 // zerar placar
-        //location.reload();
+        pontos = 0
         instrucoes.classList.remove('placar')
 
         divBotaoRefazer.style.display = "none"
-        // REINICIAR O JOGO
+        
         divQuestoes.style.display = 'block'
         proximaQuestao(1)
         instrucoes.textContent = 'Leia a questão e clique na resposta correta'
