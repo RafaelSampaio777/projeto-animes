@@ -1,35 +1,13 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
-function buscarUltimasMedidas(fk_anime) {
+function buscarUltimasMedidas() {
 
     instrucaoSql = ''
 
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `
-        SELECT
-        animes.nome AS Anime_favorito,
-        COUNT(usuario.FK_anime) AS Usuarios 
+ if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `		SELECT animes.nome AS nome_anime, COUNT(usuario.FK_anime) AS Usuarios 
         FROM usuario
-        JOIN animes ON animes.ID = usuario.FK_anime WHERE FK_anime = ${fk_anime}
-        `;
-        instrucaoSql += `
-        SELECT
-        COUNT(usuario.FK_anime) AS Total_usuarios 
-        FROM usuario;
-        `;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `
-        SELECT
-        animes.nome AS Anime_favorito,
-        COUNT(usuario.FK_anime) AS Usuarios 
-        FROM usuario
-        JOIN animes ON animes.ID = usuario.FK_anime WHERE FK_anime = ${fk_anime}
-        `;
-        instrucaoSql += `
-        SELECT
-        COUNT(usuario.FK_anime) AS Total_usuarios 
-        FROM usuario;
-        `;
+        JOIN animes ON animes.ID = usuario.FK_anime GROUP BY(FK_anime);`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -38,6 +16,24 @@ function buscarUltimasMedidas(fk_anime) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function buscarMedidasEmTempoReal() {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `		SELECT animes.nome AS nome_anime, COUNT(usuario.FK_anime) AS Usuarios 
+        FROM usuario
+        JOIN animes ON animes.ID = usuario.FK_anime GROUP BY(FK_anime);`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 function escolher_anime(fk_anime, usuario) {
     console.log("ACESSEI O FAVORITO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function escolher_anime():", fk_anime, usuario);
@@ -52,6 +48,7 @@ function escolher_anime(fk_anime, usuario) {
 }
 
 module.exports = {
-    escolher_anime,
-    buscarUltimasMedidas
+    buscarUltimasMedidas,
+    buscarMedidasEmTempoReal,
+    escolher_anime
 };
