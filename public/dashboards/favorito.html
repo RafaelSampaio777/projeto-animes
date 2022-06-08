@@ -86,9 +86,6 @@
 
     let proximaAtualizacao;
 
-    window.onload = obterDadosGrafico();
-
-
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -140,21 +137,21 @@
             datasets: [{
                 label: `${resposta[2].nome_anime}`,
                 backgroundColor: '#1559B3',
-                borderColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgba(0,0,0,0.5)',
                 data: [one_piece],
             },
 
             {
                 label: `${resposta[1].nome_anime}`,
                 backgroundColor: '#f77f00',
-                borderColor: 'rgb(0, 255, 255)',
+                borderColor: 'rgba(0,0,0,0.5)',
                 data: [naruto],
             },
 
             {
                 label: `${resposta[0].nome_anime}`,
                 backgroundColor: '#000000',
-                borderColor: 'rgb(0, 255, 255)',
+                borderColor: 'rgba(0,0,0,0.5)',
                 data: [bleach],
             }
 
@@ -163,7 +160,7 @@
         const config = {
             type: 'bar',
             data: data,
-            options: {}
+            options: {},
         };
         const grafico = new Chart(
             document.getElementById('canvas_grafico'),
