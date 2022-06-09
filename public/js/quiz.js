@@ -65,12 +65,12 @@ var q4 = {
 }
 var q5 = {
     numQuestao: 5,
-    pergunta: "Qual é o nome da organização criminosa de Naruto",
-    alternativaA: "Hokage",
-    alternativaB: "Akatsuki",
-    alternativaC: "mugiwaras",
-    alternativaD: "Akakusuki",
-    correta: "Akatsuki",
+    pergunta: "Quem fez a cicatriz na barriga do Luffy?",
+    alternativaA: "Barba negra",
+    alternativaB: "Zoro",
+    alternativaC: "Buggy",
+    alternativaD: "Akainu",
+    correta: "Akainu",
 }
 var q6 = {
     numQuestao: 6,
@@ -110,16 +110,16 @@ var q9 = {
 }
 var q10 = {
     numQuestao: 10,
-    pergunta: "Quem fez o corte na barriga do Luffy?",
-    alternativaA: "Barba negra",
-    alternativaB: "Zoro",
-    alternativaC: "Buggy",
-    alternativaD: "Akainu",
-    correta: "Akainu",
+    pergunta: "Qual é o nome da organização criminosa de Naruto",
+    alternativaA: "Hokage",
+    alternativaB: "Akatsuki",
+    alternativaC: "Mugiwaras",
+    alternativaD: "Akakusuki",
+    correta: "Akatsuki",
 }
 
 var questoes = [q0, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
-var imgs = ["bleach1.png", "usopp.webp", "naruto1.webp", "bleach2.jpg", "luffy.webp", "naruto2.jpg", "bleach3.jpg", "O_MAIOR_DE_TODOS.jpg", "naruto3.jpg", "chopper.jpg"]
+var imgs = ["bleach1.png", "usopp.webp", "naruto1.webp", "bleach2.jpg", "luffy.webp", "chopper.jpg", "bleach3.jpg", "naruto3.jpg", "O_MAIOR_DE_TODOS.jpg", "naruto2.jpg"]
 
 var numero = document.querySelector('#numero')
 var total = document.querySelector('#total')
@@ -328,152 +328,53 @@ function plotarGrafico(resposta) {
     console.log('iniciando plotagem do gráfico...');
 
     var nome_label = [
-        'Nota dos usuarios'
+        'Pontuação dos usuarios'
     ];
 
-    // const data = {
-    //     labels: nome_label,
-    //     datasets: [{
-    //         label: `${resposta[0].metrica}`,
-    //         backgroundColor: '#1559B3',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [zero],
-    //     },
-
-    //     {
-    //         label: `${resposta[1].metrica}`,
-    //         backgroundColor: '#f77f00',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [um],
-    //     },
-
-    //     {
-    //         label: `${resposta[2].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [dois],
-    //     },
-   
-    //     {
-    //         label: `${resposta[3].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [tres],
-    //     },
-   
-    //     {
-    //         label: `${resposta[4].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [quatro],
-    //     },
-   
-    //     {
-    //         label: `${resposta[5].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [cinco],
-    //     },
-   
-    //     {
-    //         label: `${resposta[6].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [seis],
-    //     },
-   
-    //     {
-    //         label: `${resposta[7].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [sete],
-    //     },
-   
-    //     {
-    //         label: `${resposta[8].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [oito],
-    //     },
-   
-    //     {
-    //         label: `${resposta[9].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [nove],
-    //     },
-   
-    //     {
-    //         label: `${resposta[10].metrica}`,
-    //         backgroundColor: '#000000',
-    //         borderColor: 'rgba(0,0,0,0.5)',
-    //         data: [dez],
-    //     }
-
-    //     ]
-    // };
-    
-    // const config = {
-    //     type: 'bar',
-    //     data: data,
-    //     options: {
-    //       scales: {
-    //         y: {
-    //           beginAtZero: true
-    //         }
-    //       }
-    //     },
-    //   };
-    
-    //   const grafico = new Chart(
-    //     document.getElementById('canvas_grafico'),
-    //     config
-    // );
-
     const ctx = document.getElementById('canvas_grafico').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: [resposta[0].metrica, resposta[1].metrica, resposta[2].metrica, resposta[3].metrica, resposta[4].metrica, resposta[5].metrica, resposta[6].metrica, resposta[7].metrica, resposta[8].metrica, resposta[9].metrica, resposta[10].metrica],
-        datasets: [{
-            label: nome_label,
-            data: [zero, um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.7)',
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(75, 192, 192, 0.7)',
-                'rgba(153, 102, 255, 0.7)',
-                'rgba(255, 159, 64, 0.7)',
-                'rgba(255, 99, 132, 0.7)',
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(75, 192, 192, 0.7)',
-                'rgba(153, 102, 255, 0.7)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [resposta[0].metrica, resposta[1].metrica, resposta[2].metrica, resposta[3].metrica, resposta[4].metrica, resposta[5].metrica, resposta[6].metrica, resposta[7].metrica, resposta[8].metrica, resposta[9].metrica, resposta[10].metrica],
+            datasets: [{
+                label: nome_label,
+                data: [zero, um, dois, tres, quatro, cinco, seis, sete, oito, nove, dez],
+                backgroundColor: [
+                    'rgba(23, 99, 132, 1.5)',
+                    'rgba(54, 30, 55, 1.5)',
+                    'rgba(255, 26, 86, 1.5)',
+                    'rgba(255, 0, 0, 1.5)',
+                    'rgba(153, 102, 255, 1.5)',
+                    'rgba(255, 159, 234, 1.5)',
+                    'rgba(255, 20, 132, 1.5)',
+                    'rgba(54, 162, 235, 1.5)',
+                    'rgba(0, 206, 86, 1.5)',
+                    'rgba(75, 192, 192, 1.5)',
+                    'rgba(153, 102, 25, 1.5)'
+                ],
+                borderColor: [
+                    'rgba(23, 99, 132, 2)',
+                    'rgba(54, 30, 55, 2)',
+                    'rgba(255, 26, 86, 2)',
+                    'rgba(255, 0, 0, 2)',
+                    'rgba(153, 102, 255, 2)',
+                    'rgba(255, 159, 234, 2)',
+                    'rgba(255, 20, 132, 2)',
+                    'rgba(54, 162, 235, 2)',
+                    'rgba(0, 206, 86, 2)',
+                    'rgba(75, 192, 192, 2)',
+                    'rgba(153, 102, 25, 2)'
+                ],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
-});
+    });
 
 }

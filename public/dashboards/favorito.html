@@ -33,11 +33,6 @@
                     <h3>QUIZ</h3>
                 </a>
             </div>
-            <div>
-                <a href="">
-                    <h3>CHAT</h3>
-                </a>
-            </div>
             <div onclick="limparSessao()">
                 <h3>SAIR</h3>
             </div>
@@ -83,6 +78,13 @@
     var one_piece = 0;
     var naruto = 0;
     var bleach = 0;
+    var parametro = 0;
+
+    var total = 0;
+
+    var porcent_op = 0;
+    var porcent_nar = 0;
+    var porcent_ble = 0;
 
     let proximaAtualizacao;
 
@@ -92,7 +94,8 @@
 
     function obterDadosGrafico() {
 
-        box.innerHTML = `<canvas id="canvas_grafico"></canvas>`
+        box.innerHTML = `<div id="div_grafico"><canvas id="canvas_grafico"></canvas>
+            <canvas id="canvas_grafico2"></canvas></div>`
 
 
         if (proximaAtualizacao != undefined) {
@@ -108,6 +111,13 @@
                     one_piece = resposta[2].Usuarios;
                     naruto = resposta[1].Usuarios;
                     bleach = resposta[0].Usuarios;
+                    parametro = 0;
+
+                    total = one_piece + naruto + bleach;
+
+                    porcent_op = (one_piece / total) * 100;
+                    porcent_nar = (naruto / total) * 100;
+                    porcent_ble = (bleach / total) * 100;
 
                     plotarGrafico(resposta);
 
@@ -128,44 +138,98 @@
 
         console.log('iniciando plotagem do gráfico...');
 
-        var nome_label = [
-            'Favoritos dos usuarios'
-        ];
+        var nome_label = 'Favoritos dos usuarios';
 
-        const data = {
-            labels: nome_label,
-            datasets: [{
-                label: `${resposta[2].nome_anime}`,
-                backgroundColor: '#1559B3',
-                borderColor: 'rgba(0,0,0,0.5)',
-                data: [one_piece],
-            },
+        // const data = {
+        //     labels: nome_label,
+        //     datasets: [{
+        //         label: `${resposta[2].nome_anime}`,
+        //         backgroundColor: '#1559B3',
+        //         borderColor: 'rgba(0,0,0,0.5)',
+        //         data: [one_piece],
+        //     },
 
-            {
-                label: `${resposta[1].nome_anime}`,
-                backgroundColor: '#f77f00',
-                borderColor: 'rgba(0,0,0,0.5)',
-                data: [naruto],
-            },
+        //     {
+        //         label: `${resposta[1].nome_anime}`,
+        //         backgroundColor: '#f77f00',
+        //         borderColor: 'rgba(0,0,0,0.5)',
+        //         data: [naruto],
+        //     },
 
-            {
-                label: `${resposta[0].nome_anime}`,
-                backgroundColor: '#000000',
-                borderColor: 'rgba(0,0,0,0.5)',
-                data: [bleach],
-            }
+        //     {
+        //         label: `${resposta[0].nome_anime}`,
+        //         backgroundColor: '#000000',
+        //         borderColor: 'rgba(0,0,0,0.5)',
+        //         data: [bleach],
+        //     }
 
-            ]
-        };
-        const config = {
+        //     ]
+        // };
+        // const config = {
+        //     type: 'bar',
+        //     data: data,
+        //     options: {},
+        // };
+        // const grafico = new Chart(
+        //     document.getElementById('canvas_grafico'),
+        //     config
+        // );
+
+        const ctx = document.getElementById('canvas_grafico').getContext('2d');
+        const myChart = new Chart(ctx, {
             type: 'bar',
-            data: data,
-            options: {},
-        };
-        const grafico = new Chart(
-            document.getElementById('canvas_grafico'),
-            config
-        );
+            data: {
+                labels: [resposta[0].nome_anime, resposta[1].nome_anime, resposta[2].nome_anime, parametro],
+                datasets: [{
+                    label: nome_label,
+                    data: [bleach, naruto, one_piece, parametro],
+                    backgroundColor: [
+                        '#000000',
+                        '#f77f00',
+                        '#1559B3',
+                        'rgba(255, 206, 86, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 0, 0, 0.5)',
+                        'rgba(250, 100, 0, 0.5)',
+                        'rgba(50, 100, 200, 0.5)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('canvas_grafico2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: [resposta[0].nome_anime, resposta[1].nome_anime, resposta[2].nome_anime],
+                datasets: [{
+                    label: nome_label,
+                    data: [porcent_ble, porcent_nar, porcent_op],
+                    backgroundColor: [
+                        '#000000',
+                        '#f77f00',
+                        '#1559B3'
+                    ],
+                    borderColor: [
+                        'rgba(0, 0, 0, 0.5)',
+                        'rgba(250, 100, 0, 0.5)',
+                        'rgba(50, 100, 200, 0.5)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {}
+        });
 
     } 
 </script>
@@ -176,13 +240,34 @@
     var anime = sessionStorage.ANIME_FAVORITO;
 
     if (anime == 1) {
+        box.style.backgroundImage = `url(../CSS/style/IMG/background/favorito_one_piece.jpg)`
+        
+        box.style.backgroundSize = `cover`
 
+        box.style.flexDirection = "column"
+        
+        box.innerHTML = `<div id="div_videos"><video src="../CSS/style/video/luffy and Chopper - Boku wa doctor.mp4" controls width="30%"></video><video src="../CSS/style/video/Bink's Sake.mp4" controls width="30%"></video></div>`
+        box.innerHTML += `<div id="div_videos"><video src="../CSS/style/video/One Piece Opening 1 We Are!.mp4" controls width="30%"></video><video src="../CSS/style/video/One Piece Opening 13 _One Day.mp4" controls width="30%"></video></div>`
     }
     else if (anime == 2) {
+        box.style.backgroundImage = `url(../CSS/style/IMG/background/favorito_naruto.webp)`
 
+        box.style.backgroundSize = `cover`
+        
+        box.style.flexDirection = "column"
+        
+        box.innerHTML = `<div id="div_videos"><video src="../CSS/style/video/Naruto Opening 1 _ R★O★C★K★S (HD).mp4" controls width="30%"></video><video src="../CSS/style/video/Naruto Opening 4 _ GO!!! (HD).mp4" controls width="30%"></video></div>`
+        box.innerHTML += `<div id="div_videos"><video src="../CSS/style/video/Naruto Shippuden Opening 3 _ Blue Bird (HD).mp4" controls width="30%"></video><video src="../CSS/style/video/Naruto Shippuden Opening 16 _ Silhouette (HD).mp4" controls width="30%"></video></div>`
     }
     else if (anime == 3) {
+        box.style.backgroundImage = `url(../CSS/style/IMG/background/favorito_bleach.png)`
+        
+        box.style.backgroundSize = `cover`
 
+        box.style.flexDirection = "column"
+        
+        box.innerHTML = `<div id="div_videos"><video src="../CSS/style/video/Bleach Opening 1 HD.mp4" controls width="30%"></video><video src="../CSS/style/video/Bleach Opening 5.mp4" controls width="30%"></video></div>`
+        box.innerHTML += `<div id="div_videos"><video src="../CSS/style/video/Bleach Opening 6 Creditless.mp4" controls width="30%"></video><video src="../CSS/style/video/Bleach - Opening 7 _ After Dark.mp4" controls width="30%"></video></div>`
     }
     else {
         box.innerHTML = `
