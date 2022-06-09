@@ -168,8 +168,28 @@ body {
 
 .corpo {
     display: flex;
-    background-image: linear-gradient(to left, #F24444, #FF1500);
     padding: 20px;
+    height: 70vh;
+}
+
+.corpo.index {
+    background-image: linear-gradient(to left, #F24444, #FF1500);
+}
+
+.corpo.naruto {
+    margin-top: 11.7vh;
+    background-image: linear-gradient(to right, #ee660c, #ff9d00);
+}
+
+.corpo.personagem-naruto {
+    background-image: linear-gradient(to right, #c2bc0b, #e4d103);
+}
+
+.corpo.personagem-naruto .container {
+    flex-direction: row-reverse;
+}
+
+.personagem {
     height: 70vh;
 }
 
@@ -179,22 +199,23 @@ body {
     align-items: center;    
 }
 
-.corpo img {
+.corpo .foto {
     border-radius: 15px;
     border: 2px solid #FFFFFF;
     width: 40vw;
 }
 
-#div_txt_ani {
+.div_txt_ani {
     text-align: center;
     justify-content: center;
     margin-right: 5%;
+    width: 45vw;
     font-family: Arial, Helvetica, sans-serif;
     color: #ececec;
     font-size: max(1.2vw, 12px);
 }
 
-#div_txt_ani h2 {
+.div_txt_ani h2 {
     font-size: max(2vw, 20px);
 }
 
