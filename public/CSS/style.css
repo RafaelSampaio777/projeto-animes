@@ -54,7 +54,7 @@ body {
 }
 
 .header ul li {
-    margin-right: 10px;
+    margin-right: 1vw;
 }
 
 .header ul li a {
@@ -176,16 +176,50 @@ body {
     background-image: linear-gradient(to left, #F24444, #FF1500);
 }
 
+.corpo.porque {
+    background-image: linear-gradient(to right, #0c07ff, #0059ff);
+}
+
+.corpo.porque .container {
+    flex-direction: row-reverse;
+}
+
 .corpo.naruto {
     margin-top: 11.7vh;
     background-image: linear-gradient(to right, #ee660c, #ff9d00);
 }
 
 .corpo.personagem-naruto {
-    background-image: linear-gradient(to right, #c2bc0b, #e4d103);
+    background-image: linear-gradient(to left, #8f8b01, #e7cc00);
 }
 
 .corpo.personagem-naruto .container {
+    flex-direction: row-reverse;
+}
+
+.corpo.bleach {
+    margin-top: 11.7vh;
+    background-image: linear-gradient(to right, #8d8c8c, #3d3d3d);
+}
+
+.corpo.personagem-ichigo {
+    background-image: linear-gradient(to right, #767676, #de0101);
+}
+
+.corpo.personagem-ichigo .container {
+    flex-direction: row-reverse;
+}
+
+.corpo.one-piece {
+    margin-top: 11.7vh;
+    background-image: linear-gradient(to right, #2b7cff, #004284);
+}
+
+.corpo.personagem-luffy {
+    background-image: linear-gradient(to right, #ff0303, #a50303);
+}
+
+.corpo.personagem-luffy .container {
     flex-direction: row-reverse;
 }
 
@@ -419,6 +453,7 @@ footer {
     width: 30%;
     height: 60vh;
     align-items: center;
+    text-align: center;
     justify-content: space-between;
     border: 3px solid black;
     border-radius: 20px;
@@ -429,6 +464,33 @@ footer {
     width: 100%;
     border-radius: 20px 20px 0 0;
     height: 25vh;
+}
+
+.bloco.op P {
+    font-size: max(2vw, 20px);
+}
+
+.bloco.op h4 {
+    font-size: max(2vw, 25px);
+    margin: 0;
+}
+
+.bloco.naruto P {
+    font-size: max(1.2vw, 15px);
+}
+
+.bloco.naruto h4 {
+    font-size: max(1.3vw, 25px);
+    margin: 0;
+}
+
+.bloco.bleach P {
+    font-size: max(1.2vw, 15px);
+}
+
+.bloco.bleach h4 {
+    font-size: max(1.3vw, 25px);
+    margin: 0;
 }
 
 .bloco button {
